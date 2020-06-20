@@ -76,7 +76,7 @@ static NSDictionary* googlePlist;
         // Check for permission and register for remote notifications if granted
         [self _hasPermission:^(BOOL result) {}];
 
-        [GIDSignIn sharedInstance].presentingViewController = self.viewController;
+        // [GIDSignIn sharedInstance].presentingViewController = self.viewController;
 
         authCredentials = [[NSMutableDictionary alloc] init];
     }@catch (NSException *exception) {
@@ -87,7 +87,7 @@ static NSDictionary* googlePlist;
 // @override abstract
 - (void)handleOpenURL:(NSNotification*)notification{
     NSURL* url = [notification object];
-    [[GIDSignIn sharedInstance] handleURL:url];
+    [[GIDSignIn sharedInstance] handleURL:url sourceApplication:nil annotation:nil];
 }
 
 - (void)setAutoInitEnabled:(CDVInvokedUrlCommand *)command {
